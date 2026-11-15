@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#1769d2">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Super Mario 64">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<title>Super Mario 64</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000}
+#game{position:fixed;inset:0;width:100%;height:100%;border:0;background:#000}
+#hint{position:fixed;z-index:2;left:50%;top:env(safe-area-inset-top,8px);transform:translateX(-50%);
+font:14px system-ui;color:white;background:#153b70dd;padding:8px 12px;border-radius:12px;
+pointer-events:none;animation:hide 1s 5s forwards}
+@keyframes hide{to{opacity:0}}
+</style>
+</head>
+<body>
+<div id="hint">Loading Super Mario 64…</div>
+<iframe id="game" title="Super Mario 64" src="https://notan127.github.io/SM64-PC-Port-WebGL/"
+ allow="fullscreen; gamepad; autoplay; clipboard-read; clipboard-write"
+ allowfullscreen></iframe>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+}
+</script>
+</body>
+</html>
